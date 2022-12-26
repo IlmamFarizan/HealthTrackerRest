@@ -11,7 +11,6 @@ import ie.setu.domain.repository.UserDAO
 import io.javalin.http.Context
 import io.javalin.plugin.openapi.annotations.*
 
-
 object HealthTrackerController {
 
     private val userDao = UserDAO()
@@ -140,5 +139,33 @@ object HealthTrackerController {
         val activity = mapper.readValue<Activity>(ctx.body())
         activityDAO.save(activity)
         ctx.json(activity)
+    }
+
+    fun getActivitiesByActivityId(ctx: Context) {
+        val activity = activityDAO.findByActivityId((ctx.pathParam("activity-id").toInt()))
+        if (activity != null){
+            val mapper = jacksonObjectMapper()
+                .registerModule(JodaModule())
+                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+            ctx.json(mapper.writeValueAsString(activity))
+        }
+    }
+
+    fun deleteActivityByActivityId(ctx: Context){
+        activityDAO.deleteByActivityId(ctx.pathParam("activity-id").toInt())
+    }
+
+    fun deleteActivityByUserId(ctx: Context){
+        activityDAO.deleteByUserId(ctx.pathParam("user-id").toInt())
+    }
+
+    fun updateActivity(ctx: Context){
+        val mapper = jacksonObjectMapper()
+            .registerModule(JodaModule())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        val activity = mapper.readValue<Activity>(ctx.body())
+        activityDAO.updateByActivityId(
+            activityId = ctx.pathParam("activity-id").toInt(),
+            activityDTO=activity)
     }
 }

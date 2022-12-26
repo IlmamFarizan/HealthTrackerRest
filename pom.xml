@@ -43,23 +43,25 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- removing the following 3 dependencies when adding javalin bundle for Swagger docs-->
         <!-- Adding Javalin dependency -->
-        <dependency>
+        <!--dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
             <version>4.6.1</version>
-        </dependency>
+        </dependency-->
         <!-- These Logging Dependencies are required; warning appears otherwise when running -->
-        <dependency>
+        <!--dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.0-alpha7</version>
-        </dependency>
-        <dependency>
+        </dependency-->
+        <!--dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.0-alpha7</version>
-        </dependency>
+        </dependency-->
+
         <!-- json dependency for localhost running -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -72,7 +74,6 @@
             <artifactId>jackson-module-kotlin</artifactId>
             <version>2.13.3</version>
         </dependency>
-
         <!-- Jetbrains exposed dependency -->
         <dependency>
             <groupId>org.jetbrains.exposed</groupId>
@@ -85,17 +86,17 @@
             <artifactId>postgresql</artifactId>
             <version>42.4.0</version>
         </dependency>
-        <!-- used bundle to enable openapi swagger documentation -->
-        <dependency>
-            <groupId>io.javalin</groupId>
-            <artifactId>javalin-bundle</artifactId>
-            <version>4.6.1</version>
-        </dependency>
         <!-- kotlin logging -->
         <dependency>
             <groupId>io.github.microutils</groupId>
             <artifactId>kotlin-logging</artifactId>
             <version>1.12.5</version>
+        </dependency>
+        <!-- used bundle to enable openapi swagger documentation -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin-bundle</artifactId>
+            <version>4.6.1</version>
         </dependency>
         <!-- json dependency for serialising joda date time -->
         <dependency>
@@ -103,7 +104,6 @@
             <artifactId>jackson-datatype-joda</artifactId>
             <version>2.13.3</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -111,18 +111,6 @@
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
 
         <plugins>
-            <!-- surefire plugin MOJO - for testing during maven lifecycle-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <includes>
-                        <include>Test*</include>
-                        <include>*Test</include>
-                    </includes>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -176,11 +164,23 @@
                 <version>3.0.4</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
-                    <appName>health-tracker-rest-20100876</appName>
+                    <appName>health-tracker-rest</appName>
                     <processTypes>
                         <!-- Tell Heroku how to launch your application -->
                         <web>java -jar ./target/healthtrackerrest-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
+                </configuration>
+            </plugin>
+            <!-- surefire plugin MOJO - for testing during maven lifecycle-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <includes>
+                        <include>Test*</include>
+                        <include>*Test</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>

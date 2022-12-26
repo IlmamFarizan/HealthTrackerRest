@@ -8,14 +8,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class UserDAO {
 
-    private val users = arrayListOf<User>(
-        User(name = "Alice", email = "alice@wonderland.com", id = 0),
-        User(name = "Bob", email = "bob@cat.ie", id = 1),
-        User(name = "Mary", email = "mary@contrary.com", id = 2),
-        User(name = "Carol", email = "carol@singer.com", id = 3)
-    )
-
-    fun getAll() : ArrayList<User>{
+    fun getAll(): ArrayList<User> {
         val userList: ArrayList<User> = arrayListOf()
         transaction {
             Users.selectAll().map {
@@ -51,7 +44,7 @@ class UserDAO {
         }
     }
 
-    fun delete(id: Int) {
+    fun delete(id: Int):Int{
         return transaction{
             Users.deleteWhere{
                 Users.id eq id
@@ -59,7 +52,7 @@ class UserDAO {
         }
     }
 
-    fun update(id: Int, user: User) {
+    fun update(id: Int, user: User){
         transaction {
             Users.update ({
                 Users.id eq id}) {

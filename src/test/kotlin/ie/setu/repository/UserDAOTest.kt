@@ -1,7 +1,7 @@
 package ie.setu.repository
 
-import ie.setu.domain.User
 import ie.setu.domain.db.Users
+import ie.setu.domain.User
 import ie.setu.domain.repository.UserDAO
 import ie.setu.helpers.nonExistingEmail
 import ie.setu.helpers.users
@@ -70,6 +70,7 @@ class UserDAOTest {
                 assertEquals(null, userDAO.findById(4))
             }
         }
+
         @Test
         fun `get all users over empty table returns none`() {
             transaction {
@@ -127,6 +128,39 @@ class UserDAOTest {
     }
 
     @Nested
+    inner class UpdateUsers {
+
+        @Test
+        fun `updating existing user in table results in successful update`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                val user3Updated = User(3, "new username", "new@email.ie")
+                userDAO.update(user3.id, user3Updated)
+                assertEquals(user3Updated, userDAO.findById(3))
+            }
+        }
+
+        @Test
+        fun `updating non-existant user in table results in no updates`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                val user4Updated = User(4, "new username", "new@email.ie")
+                userDAO.update(4, user4Updated)
+                assertEquals(null, userDAO.findById(4))
+                assertEquals(3, userDAO.getAll().size)
+            }
+        }
+    }
+
+    @Nested
     inner class DeleteUsers {
         @Test
         fun `deleting a non-existant user in table results in no deletion`() {
@@ -153,38 +187,6 @@ class UserDAOTest {
                 assertEquals(3, userDAO.getAll().size)
                 userDAO.delete(user3.id)
                 assertEquals(2, userDAO.getAll().size)
-            }
-        }
-        @Nested
-        inner class UpdateUsers {
-
-            @Test
-            fun `updating existing user in table results in successful update`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    val user3Updated = User(3, "new username", "new@email.ie")
-                    userDAO.update(user3.id, user3Updated)
-                    assertEquals(user3Updated, userDAO.findById(3))
-                }
-            }
-
-            @Test
-            fun `updating non-existant user in table results in no updates`() {
-                transaction {
-
-                    //Arrange - create and populate table with three users
-                    val userDAO = populateUserTable()
-
-                    //Act & Assert
-                    val user4Updated = User(4, "new username", "new@email.ie")
-                    userDAO.update(4, user4Updated)
-                    assertEquals(null, userDAO.findById(4))
-                    assertEquals(3, userDAO.getAll().size)
-                }
             }
         }
     }
