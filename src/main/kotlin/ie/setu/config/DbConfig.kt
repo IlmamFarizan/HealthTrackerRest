@@ -4,11 +4,11 @@ import mu.KotlinLogging
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.name
 
-class DbConfig{
+class DbConfig {
 
     //NOTE: you need the ?sslmode=require otherwise you get an error complaining about the ssl certificate
-fun getDbConnection() {
-        private val logger = KotlinLogging.logger {}
+    fun getDbConnection() {
+        val logger = KotlinLogging.logger {}
 
         //NOTE: you need the ?sslmode=require otherwise you get an error complaining about the ssl certificate
         fun getDbConnection(): Database {
@@ -27,4 +27,5 @@ fun getDbConnection() {
 
             return dbConfig
         }
+    }
 }
