@@ -10,6 +10,7 @@ class DbConfig{
         val logger = KotlinLogging.logger {}
         logger.info{"Starting DB Connection..."}
 
+        //Change Credentials To My Own From ElephantSQL
         val PGUSER = "irzbefvo"
         val PGPASSWORD = "v9IBw2xzIrhS4G8TodX3OkaEE272XBNR"
         val PGHOST = "mel.db.elephantsql.com"
