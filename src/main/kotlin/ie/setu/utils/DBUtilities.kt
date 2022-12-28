@@ -11,6 +11,7 @@ fun mapToUser(it: ResultRow) = User(
     name = it[Users.name],
     email = it[Users.email]
 )
+
 fun mapToActivity(it: ResultRow) = Activity(
     id = it[Activities.id],
     description = it[Activities.description],

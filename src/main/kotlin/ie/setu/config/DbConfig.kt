@@ -1,26 +1,39 @@
 package ie.setu.config
 
-import mu.KotlinLogging
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.name
+import mu.KotlinLogging
 
 class DbConfig{
 
-    private val logger = KotlinLogging.logger {}
-
-    //NOTE: you need the ?sslmode=require otherwise you get an error complaining about the ssl certificate
     fun getDbConnection() :Database{
+
+        val logger = KotlinLogging.logger {}
 
         logger.info{"Starting DB Connection..."}
 
-        val dbConfig = Database.connect(
-            "jdbc:postgresql://ec2-54-147-33-38.compute-1.amazonaws.com:5432/dd1alnffpluckj?sslmode=require",
-            driver = "org.postgresql.Driver",
-            user = "decoqpkgvcdpue",
-            password = "c03e409c7da188b020d3be9238b88e61fa4b4fb4ecd0d6551523dec6daf1d78a")
+        val PGHOST = "lucky.db.elephantsql.com"
+        val PGPORT = "5432"
 
-        logger.info{"DbConfig name = " + dbConfig.name}
-        logger.info{"DbConfig url = " + dbConfig.url}
+        //Test database created using handcoded SQL and Insert Statements
+        //val PGUSER = "kuwsemue"
+        //val PGPASSWORD = "zWmiFoHcieiOZIPOf-bIxWDnkzYZRl91"
+        //val PGDATABASE = "kuwsemue"
+
+        //Test database created using generated SQL and Insert Statements from Heroku
+        val PGUSER = "nhybnlbf"
+        val PGPASSWORD = "6LIYvcWKzfNIBFP0kaw2t56NJWO6UXKq"
+        val PGDATABASE = "nhybnlbf"
+
+        //url format should be jdbc:postgresql://host:port/database
+        val url = "jdbc:postgresql://$PGHOST:$PGPORT/$PGDATABASE"
+
+        val dbConfig = Database.connect(url,
+            driver="org.postgresql.Driver",
+            user = PGUSER,
+            password = PGPASSWORD
+        )
+
+        logger.info{"db url - connection: " + dbConfig.url}
 
         return dbConfig
     }
