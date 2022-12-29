@@ -1,4 +1,4 @@
-<template id="user-activity-overview">
+<!--<template id="user-activity-overview">
   <app-layout>
     <div>
         <h3>Activities list </h3>
@@ -25,3 +25,4 @@ Vue.component("user-activity-overview",{
   }
 });
 </script>
+-->

@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10806d8-c077-4da3-b029-abb9275f8292" name="Changes" comment="database change commit">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/components/app-layout.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/home-page.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-activity-overview.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-overview.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e10806d8-c077-4da3-b029-abb9275f8292" name="Changes" comment="finished Lab09 commit">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/user-activity-overview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-activity-overview.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +154,7 @@
       <workItem from="1672077337474" duration="2512000" />
       <workItem from="1672085948720" duration="7608000" />
       <workItem from="1672246719424" duration="16606000" />
-      <workItem from="1672328784640" duration="2853000" />
+      <workItem from="1672328784640" duration="3260000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1672087719369</created>
@@ -197,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672252829063</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished Lab09 commit">
+      <created>1672334873180</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672334873180</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +252,7 @@
     <MESSAGE value="third commit" />
     <MESSAGE value="fourth commit" />
     <MESSAGE value="database change commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="database change commit" />
+    <MESSAGE value="finished Lab09 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished Lab09 commit" />
   </component>
 </project>
