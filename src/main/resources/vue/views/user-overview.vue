@@ -4,7 +4,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-6">
-            Users
+            Add Users
           </div>
           <div class="col" align="right">
             <button rel="tooltip" title="Add"

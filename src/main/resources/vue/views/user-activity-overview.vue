@@ -2,11 +2,12 @@
   <app-layout>
     <div>
         <h3>Activities list </h3>
-      <ul>
-        <li v-for="activity in activities">
-          {{activity.id}}: {{activity.description}} for {{activity.duration}} minutes
-        </li>
-      </ul>
+      <br>
+      <div>
+        <button rel="tooltip" title="Swimming" class="btn btn-info btn-simple btn-link">
+          <i class="fa fa-person-swimming" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </app-layout>
 </template>
